@@ -10,22 +10,36 @@ import {
   NativeBaseProvider,
   extendTheme,
   VStack,
+  ScrollView,
   Code,
+  
 } from "native-base";
-import NativeBaseIcon from "./components/NativeBaseIcon";
+import { SafeAreaView, Image, View } from 'react-native';
 
+import NativeBaseIcon from "@components/NativeBaseIcon";
+import Example from "@components/TodoList";
+import Card from "@components/Card";
+import Carousel from "@components/Carousel";
+import ThemeScreen from "@components/Menu.tsx";
 // Define the config
 const config = {
   useSystemColorMode: false,
   initialColorMode: "dark",
 };
+import SafeViewAndroid from "@components/SafeViewAndroid";
 
 // extend the theme
 export const theme = extendTheme({ config });
 
+
+
+
 export default function App() {
   return (
+    
     <NativeBaseProvider>
+      <SafeAreaView style={SafeViewAndroid.AndroidSafeArea}>
+      <ScrollView >
       <Center
         _dark={{ bg: "blueGray.900" }}
         _light={{ bg: "blueGray.50" }}
@@ -33,22 +47,28 @@ export default function App() {
         flex={1}
       >
         <VStack space={5} alignItems="center">
+       
           <NativeBaseIcon />
-          <Heading size="lg">Welcome to NativeBase</Heading>
-          <HStack space={2} alignItems="center">
-            <Text>Edit</Text>
-            <Code>App.js</Code>
-            <Text>and save to reload.</Text>
-          </HStack>
-          <Link href="https://docs.nativebase.io" isExternal>
-            <Text color="primary.500" underline fontSize={"xl"}>
-              Learn NativeBase
-            </Text>
-          </Link>
+         
+          <Heading size="lg">Welcome </Heading>   
+           
+          <Carousel/>
+          
+          <Card/>
           <ToggleDarkMode />
+          
+          
+          
         </VStack>
+       
+        <ThemeScreen/>
+     
       </Center>
+      </ScrollView>
+      </SafeAreaView>
     </NativeBaseProvider>
+    
+    
   );
 }
 
